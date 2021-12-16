@@ -11,7 +11,7 @@ class NewCampusContainer extends Component {
         super(props);
         this.state = { 
           name: "", 
-          imageURL: "https://sdmny.hunter.cuny.edu/wp-content/uploads/2019/01/hunter-college-logo.png", 
+          imageURL: "https://cdn2.iconfinder.com/data/icons/essential-set-2-1/64/map_location-placeholder-pin-location_1-512.png", 
           address: "",
           description: "",
           redirect: false, 
