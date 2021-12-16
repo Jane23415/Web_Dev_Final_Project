@@ -31,7 +31,7 @@ const useStyles = makeStyles( () => ({
   
 }));
 
-const NewStudentView = (props) => {
+const NewCampusView = (props) => {
   const {handleChange, handleSubmit } = props;
   const classes = useStyles();
 
@@ -40,7 +40,7 @@ const NewStudentView = (props) => {
       <div className={classes.formContainer}>
         <div className={classes.formTitle}>
           <Typography style={{fontWeight: 'bold', fontFamily: 'Courier, sans-serif', fontSize: '20px', color: '#11153e'}}>
-            New Student
+            New Campus
           </Typography>
         </div>
         <form style={{textAlign: 'center'}} onSubmit={(e) => handleSubmit(e)}>
@@ -49,15 +49,15 @@ const NewStudentView = (props) => {
           <br/>
           <br/>
 
-          {/* <label style={{color:'#11153e', fontWeight: 'bold'}}>imageURL: </label>
+          <label style={{color:'#11153e', fontWeight: 'bold'}}>imageURL: </label>
           <input type="url" name="imageURL" onChange={(e) => handleChange(e)} />
           <br/>
-          <br/> */}
+          <br/>
 
-          {/* <label style={{color:'#11153e', fontWeight: 'bold'}}>Address: </label>
+          <label style={{color:'#11153e', fontWeight: 'bold'}}>Address: </label>
           <input type="text" name="address" onChange={(e) => handleChange(e)} />
           <br/>
-          <br/> */}
+          <br/>
 
           <label style={{color:'#11153e', fontWeight: 'bold'}}>Description: </label>
           <input type="text" name="description" onChange={(e) => handleChange(e)} />
@@ -76,4 +76,4 @@ const NewStudentView = (props) => {
   )
 }
 
-export default NewStudentView;
+export default NewCampusView;

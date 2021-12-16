@@ -11,8 +11,8 @@ class NewCampusContainer extends Component {
         super(props);
         this.state = { 
           name: "", 
-        //   imageURl: null, 
-        //   address: "",
+          imageURL: "https://sdmny.hunter.cuny.edu/wp-content/uploads/2019/01/hunter-college-logo.png", 
+          address: "",
           description: "",
           redirect: false, 
           redirectId: null
@@ -31,8 +31,8 @@ class NewCampusContainer extends Component {
 
         let campus = {
             name: this.state.name,
-            // imageURL: this.state.imageURL,
-            // address: this.state.address,
+            imageURL: this.state.imageURL,
+            address: this.state.address,
             description: this.state.description
         };
         
@@ -40,8 +40,8 @@ class NewCampusContainer extends Component {
 
         this.setState({
           name: "", 
-        //   imageURL: "", 
-        //   address: "",
+          imageURL: "", 
+          address: "",
           description: "", 
           redirect: true, 
           redirectId: newCampus.id
