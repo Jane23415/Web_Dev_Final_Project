@@ -45,17 +45,32 @@ const NewStudentView = (props) => {
         </div>
         <form style={{textAlign: 'center'}} onSubmit={(e) => handleSubmit(e)}>
           <label style= {{color:'#11153e', fontWeight: 'bold'}}>First Name: </label>
-          <input type="text" name="firstname" onChange ={(e) => handleChange(e)} />
+          <input type="text" name="firstname" onChange ={(e) => handleChange(e)} required />
           <br/>
           <br/>
 
           <label style={{color:'#11153e', fontWeight: 'bold'}}>Last Name: </label>
-          <input type="text" name="lastname" onChange={(e) => handleChange(e)} />
+          <input type="text" name="lastname" onChange={(e) => handleChange(e)} required />
           <br/>
           <br/>
 
-          <label style={{color:'#11153e', fontWeight: 'bold'}}>campusId: </label>
-          <input type="text" name="campusId" onChange={(e) => handleChange(e)} />
+          <label style={{color:'#11153e', fontWeight: 'bold'}}>Email: </label>
+          <input type="email" name="email" onChange={(e) => handleChange(e)} required />
+          <br/>
+          <br/>
+
+          <label style={{color:'#11153e', fontWeight: 'bold'}}>ImageURL: </label>
+          <input type="url" name="imageURL" onChange={(e) => handleChange(e)} required />
+          <br/>
+          <br/>
+
+          <label style={{color:'#11153e', fontWeight: 'bold'}}>GPA: </label>
+          <input type="number" name="gpa" onChange={(e) => handleChange(e)} min="0.0" max ="4.0" step ="0.1" required />
+          <br/>
+          <br/>
+
+          <label style={{color:'#11153e', fontWeight: 'bold'}}>CampusId: </label>
+          <input type="text" name="campusId" onChange={(e) => handleChange(e)} required />
           <br/>
           <br/>
 
