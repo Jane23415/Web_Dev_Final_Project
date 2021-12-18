@@ -5,9 +5,10 @@ const CampusView = (props) => {
   return (
     <div>      
       <h1>{campus.name}</h1>
+      {/* <p>ImageURL: </p> */}
+      <img width="25%" height="25%" src={campus.imageURL}/>
       <p>Description: {campus.description}</p>
       <p>Address: {campus.address}</p>
-      <p>ImageURL: {campus.imageURL}</p>
       <p>Students:
         {campus.students.length === 0 && <p>There are no students.</p> }
         <ul>
