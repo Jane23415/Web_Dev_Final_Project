@@ -20,6 +20,7 @@ import {
 const App = () => {
   return (
     <div className="App">
+      
       <Switch>
         <Route exact path="/" component={HomePageContainer} />
         <Route exact path="/campuses" component={AllCampusesContainer} />

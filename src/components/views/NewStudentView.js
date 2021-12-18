@@ -70,7 +70,7 @@ const NewStudentView = (props) => {
           <br/>
 
           <label style={{color:'#11153e', fontWeight: 'bold'}}>CampusId: </label>
-          <input type="text" name="campusId" onChange={(e) => handleChange(e)} required />
+          <input type="text" name="campusId" onChange={(e) => handleChange(e)} />
           <br/>
           <br/>
 
