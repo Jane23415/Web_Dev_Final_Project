@@ -9,6 +9,7 @@ const CampusView = (props) => {
       <p>Address: {campus.address}</p>
       <p>ImageURL: {campus.imageURL}</p>
       <p>Students:
+        {campus.students.length === 0 && <p>There are no students.</p> }
         <ul>
         {campus.students.map( student => {
           let name = student.firstname + " " + student.lastname;
