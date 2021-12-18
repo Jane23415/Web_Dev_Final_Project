@@ -11,7 +11,7 @@ class NewCampusContainer extends Component {
         super(props);
         this.state = { 
           name: "", 
-          imageURL: "https://cdn2.iconfinder.com/data/icons/essential-set-2-1/64/map_location-placeholder-pin-location_1-512.png", 
+          imageURL: "", 
           address: "",
           description: "",
           redirect: false, 
@@ -34,6 +34,10 @@ class NewCampusContainer extends Component {
             address: this.state.address,
             description: this.state.description
         };
+
+        if (campus.imageURL.length === 0) {
+            campus.imageURL = "https://cdn2.iconfinder.com/data/icons/essential-set-2-1/64/map_location-placeholder-pin-location_1-512.png"
+        }
         
         let newCampus = await this.props.addCampus(campus);
 
