@@ -15,7 +15,7 @@ class NewStudentContainer extends Component {
           imageURL: "",
           email: "",
           gpa: "",
-          campusId: null, 
+          campusId: "", 
           redirect: false, 
           redirectId: null
         };
@@ -67,6 +67,7 @@ class NewStudentContainer extends Component {
         }
         return (
           <NewStudentView 
+            student = {this.state}
             handleChange = {this.handleChange} 
             handleSubmit={this.handleSubmit}      
           />

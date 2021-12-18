@@ -61,6 +61,7 @@ class NewCampusContainer extends Component {
         }
         return (
           <NewCampusView 
+            description={this.state.description}
             handleChange = {this.handleChange} 
             handleSubmit={this.handleSubmit}      
           />
