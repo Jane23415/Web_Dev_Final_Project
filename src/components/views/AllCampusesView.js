@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
+import img from './redx.png';
 
 const AllCampusesView = (props) => {
   const {deleteCampus} = props;
@@ -23,7 +24,7 @@ const AllCampusesView = (props) => {
             <h1>{campus.name}</h1>
           </Link>
           <p>{campus.description}</p>
-          <button onClick={() => deleteCampus(campus.id)}>Delete</button>
+          <img src = {img} width={25} height={25}  onClick={() => deleteCampus(campus.id)}/>
         </div>
       ))}
       <Link to={`/newcampus`}>
