@@ -1,4 +1,4 @@
-
+import { Link } from "react-router-dom";
 
 const CampusView = (props) => {
   const {campus} = props;
