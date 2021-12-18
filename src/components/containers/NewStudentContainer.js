@@ -11,7 +11,10 @@ class NewStudentContainer extends Component {
         super(props);
         this.state = {
           firstname: "", 
-          lastname: "", 
+          lastname: "",
+          imageURL: "",
+          email: "",
+          gpa: "",
           campusId: null, 
           redirect: false, 
           redirectId: null
@@ -26,18 +29,28 @@ class NewStudentContainer extends Component {
 
     handleSubmit = async event => {
         event.preventDefault();
-
+        
         let student = {
-            firstname: this.state.firstname,
-            lastname: this.state.lastname,
-            campusId: this.state.campusId
+          firstname: this.state.firstname,
+          lastname: this.state.lastname,
+          imageURL: this.state.imageURL,
+          email: this.state.email,
+          gpa: this.state.gpa,
+          campusId: this.state.campusId
         };
+
+        if (student.imageURL.length === 0) {
+          student.imageURL = "https://pwco.com.sg/wp-content/uploads/2020/05/Generic-Profile-Placeholder-v3.png"
+        }
         
         let newStudent = await this.props.addStudent(student);
 
         this.setState({
           firstname: "", 
           lastname: "", 
+          imageURL: "",
+          email: "",
+          gpa: "",
           campusId: null, 
           redirect: true, 
           redirectId: newStudent.id
