@@ -20,9 +20,7 @@ const AllCampusesView = (props) => {
           <Link to={`/campus/${campus.id}`}>
             <h1>{campus.name}</h1>
           </Link>
-          <p>ImageURL: {campus.imageURL}</p>
-          <p>Address: {campus.address}</p>
-          <p>Description: {campus.description}</p>
+          <p>{campus.description}</p>
         </div>
       ))}
       <Link to={`newcampus`}>
