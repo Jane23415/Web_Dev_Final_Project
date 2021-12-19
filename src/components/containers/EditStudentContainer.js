@@ -1,21 +1,17 @@
 import { Component } from 'react';
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import PropTypes from "prop-types";
+
 
 import EditStudentView from '../views/EditStudentView';
 import { editStudentThunk, fetchStudentThunk} from '../../store/thunks'; 
 
 
-class NewStudentContainer extends Component {
+class EditStudentContainer extends Component {
     constructor(props){
         super(props);
         this.state = {
-          firstname: "", 
-          lastname: "",
-          imageURL: "",
-          email: "",
-          gpa: "",
-          campusId: "", 
+          student: this.props.student,
           redirect: false, 
           redirectId: null
         };
@@ -23,14 +19,22 @@ class NewStudentContainer extends Component {
     
     componentDidMount() {
         //getting student ID from url
-        console.log(this.props.match.id)
-        this.props.fetchStudent(this.props.match.params.id);
-        console.log(this.props.student)
+
+        const studentId = this.props.match.params.id;
+        this.props.fetchStudent(studentId);
+        
+        
     }
+
+    handleChange = event => {
+        this.setState({
+          [event.target.name]: event.target.value
+        });
+    }
+
 
     handleSubmit = async event => {
         event.preventDefault();
-        
         let student = {
           firstname: this.state.firstname,
           lastname: this.state.lastname,
@@ -65,7 +69,7 @@ class NewStudentContainer extends Component {
     render() {
         return (
           <EditStudentView 
-            student = {this.props.student}
+            studentInfo = {this.state}
             handleChange = {this.handleChange} 
             handleSubmit={this.handleSubmit}      
           />
@@ -73,13 +77,14 @@ class NewStudentContainer extends Component {
     }
 }
 
+
+
 const mapState = (state) => {
-    console.log("inside mapstate:", state)
     return {
       student: state.student,
     };
-}
-
+  };
+  
 
 const mapDispatch = (dispatch) => {
     return({
@@ -88,4 +93,9 @@ const mapDispatch = (dispatch) => {
     })
 }
 
-export default connect(null, mapDispatch, mapState)(NewStudentContainer);
+EditStudentContainer.propTypes = {
+    fetchStudent: PropTypes.func.isRequired,
+    editStudent: PropTypes.func.isRequired,
+};
+
+export default connect(mapState, mapDispatch)(EditStudentContainer);

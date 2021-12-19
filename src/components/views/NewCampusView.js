@@ -63,7 +63,6 @@ const NewCampusView = (props) => {
           <br/>
 
           <label style={{color:'#11153e', fontWeight: 'bold'}}>Description: </label>
-          {/* <input type="textarea" name="description" onChange={(e) => handleChange(e)} /> */}
           <br/>
           <textarea id="description" name="description" value={description} rows="4" cols="50" onChange={(e) => handleChange(e)} > </textarea>
           <br/>
