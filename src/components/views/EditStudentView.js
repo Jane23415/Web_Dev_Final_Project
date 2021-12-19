@@ -31,8 +31,8 @@ const useStyles = makeStyles( () => ({
   
 }));
 
-const NewStudentView = (props) => {
-  const {handleChange, handleSubmit } = props;
+const EditStudentView = (props) => {
+  const {handleChange, handleSubmit, student } = props;
 
   const classes = useStyles();
   return (
@@ -86,4 +86,4 @@ const NewStudentView = (props) => {
   )
 }
 
-export default NewStudentView;
+export default EditStudentView;
