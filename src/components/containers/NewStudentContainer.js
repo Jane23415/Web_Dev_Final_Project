@@ -9,13 +9,14 @@ import { addStudentThunk } from '../../store/thunks';
 class NewStudentContainer extends Component {
     constructor(props){
         super(props);
+        this.handleSubmit = this.handleSubmit.bind(this);
         this.state = {
           firstname: "", 
           lastname: "",
           imageURL: "",
           email: "",
           gpa: "",
-          campusId: null, 
+          campusId: "", 
           redirect: false, 
           redirectId: null
         };
@@ -38,13 +39,15 @@ class NewStudentContainer extends Component {
           gpa: this.state.gpa,
           campusId: this.state.campusId
         };
-
+        console.log("student :", student)
+        console.log("length: ", student.imageURL.length)
         if (student.imageURL.length === 0) {
           student.imageURL = "https://pwco.com.sg/wp-content/uploads/2020/05/Generic-Profile-Placeholder-v3.png"
         }
         
         let newStudent = await this.props.addStudent(student);
 
+        console.log("student id:", newStudent.id)
         this.setState({
           firstname: "", 
           lastname: "", 
@@ -67,6 +70,7 @@ class NewStudentContainer extends Component {
         }
         return (
           <NewStudentView 
+            student = {this.state}
             handleChange = {this.handleChange} 
             handleSubmit={this.handleSubmit}      
           />
