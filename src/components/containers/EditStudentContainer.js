@@ -1,5 +1,6 @@
 import { Component } from 'react';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import PropTypes from "prop-types";
 
 
@@ -12,20 +13,18 @@ class EditStudentContainer extends Component {
         super(props);
         this.state = {
           student: this.props.student,
+          studentId: this.props.match.params.id,
           redirect: false, 
-          redirectId: null
+          redirectId: null,
         };
     }
     
     componentDidMount() {
         //getting student ID from url
-
-        const studentId = this.props.match.params.id;
-        this.props.fetchStudent(studentId);
-        
-        
+        this.props.fetchStudent(this.state.studentId);
     }
-
+    
+    //change state values based on user input
     handleChange = event => {
         this.setState({
           [event.target.name]: event.target.value
@@ -34,22 +33,29 @@ class EditStudentContainer extends Component {
 
 
     handleSubmit = async event => {
-        event.preventDefault();
-        let student = {
-          firstname: this.state.firstname,
-          lastname: this.state.lastname,
-          imageURL: this.state.imageURL,
-          email: this.state.email,
-          gpa: this.state.gpa,
-          campusId: this.state.campusId
-        };
+      event.preventDefault();
+      let student = {
+        firstname: this.state.firstname,
+        lastname: this.state.lastname,
+        imageURL: this.state.imageURL,
+        email: this.state.email,
+        gpa: this.state.gpa,
+        campusId: this.state.campusId,
+        id: this.state.studentId
+      };
 
-        if (student.imageURL.length === 0) {
+        if (typeof student.imageURL === undefined) {
           student.imageURL = "https://pwco.com.sg/wp-content/uploads/2020/05/Generic-Profile-Placeholder-v3.png"
         }
         
+
+
+        
+
         let newStudent = await this.props.editStudent(student);
 
+
+        console.log("new student: ", newStudent)
         this.setState({
           firstname: "", 
           lastname: "", 
@@ -58,7 +64,7 @@ class EditStudentContainer extends Component {
           gpa: "",
           campusId: null, 
           redirect: true, 
-          redirectId: newStudent.id
+          redirectId: this.state.studentId
         });
     }
 
@@ -67,6 +73,9 @@ class EditStudentContainer extends Component {
     }
 
     render() {
+      if(this.state.redirect) {
+        return (<Redirect to={`/student/${this.state.redirectId}`}/>)
+      }
         return (
           <EditStudentView 
             studentInfo = {this.state}
