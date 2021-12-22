@@ -9,6 +9,12 @@ const allCampuses = (state = [], action) => {
       return [...state, action.payload]
     case at.DELETE_CAMPUS:
       return state.filter(campus => campus.id!==action.payload);
+      case at.EDIT_CAMPUS:
+        return state.map(campus => { 
+          return (
+            campus.id===action.payload.id ? action.payload : campus
+          );
+        });
     default:
       return state;
   }
